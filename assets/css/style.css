@@ -262,7 +262,7 @@ button:hover{
     pointer-events:none;
 }
 
-.confetti i{
+.confetti i{ 
     position:absolute;
     display:block;
     border-radius:4px;

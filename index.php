@@ -60,7 +60,7 @@
                     <textarea name="message" placeholder="Write your birthday message here..." required></textarea>
                     <img src="assets/images/small_heart.png" class="message-heart" alt="">
                 </div>
-            </label>
+            </label> 
 
           <button type="submit">
                     <i class="fa-solid fa-paper-plane"></i>
