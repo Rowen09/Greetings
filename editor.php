@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>Design Your Birthday Card</title>
-
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Patrick+Hand&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/editor.css">
 </head>
@@ -44,25 +44,15 @@
                     Happy Day! ♡
                 </div>
 
-                <!-- <div class="main-note" contenteditable="true">
-                    <h2>message</h2>
-                    <p>
-                        Write your birthday message here...
-                    </p>
-                </div> -->
+        
+                 <div class="sticky-note">
 
-                <div class="sticky-note" contenteditable="true">
-                    <h2>Message</h2>
-                    <p>
-                        Write your birthday message here...
-                    </p>
+                    <div class="sticky-body" contenteditable="true" spellcheck="false" autocorrect="off" autocapitalize="off" autocomplete="off" data-placeholder="Write your message..."></div>
+
                     <div class="resize-handle"></div>
+
                 </div>
 
-                <!-- <div class="sticker cake">🎂</div>
-                <div class="sticker balloon">🎈</div>
-                <div class="sticker heart">💖</div>
-                <div class="sticker flower">🌸</div> -->
 
             </div>
 
@@ -92,6 +82,10 @@
         <button class="font-color" data-color="#222">Black</button>
         <button class="font-color" data-color="#ff4f8b">Pink</button>
         <button class="font-color" data-color="#4b8cff">Blue</button>
+        <!-- fonts -->
+        <button class="font-family" data-font="'Caveat', cursive">Cute</button>
+        <button class="font-family" data-font="'Patrick Hand', cursive">Handwritten</button>
+        <button class="font-family" data-font="'Nunito', sans-serif">Clean</button>
         <!-- delete -->
         <button id="deleteNoteBtn" class="danger-btn">
             Delete Note

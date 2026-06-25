@@ -208,7 +208,7 @@ body {
     user-select: none;
 }
 
-.sticky-note h2 {
+/* .sticky-note h2 {
     margin: 0 0 20px;
     text-align: center;
     font-size: 38px;
@@ -216,6 +216,39 @@ body {
 
 .sticky-note p {
     margin: 0;
+} */
+
+/* =========================================
+   STICKY NOTE HEADER
+========================================= */
+
+/* .sticky-header{
+
+    font-size:38px;
+    text-align:center;
+    margin-bottom:20px;
+    font-weight:bold;
+
+} */
+
+/* =========================================
+   STICKY NOTE BODY
+========================================= */
+
+.sticky-body{
+
+    width:100%;
+    height:100%;
+
+    outline:none;
+
+    font-family:'Caveat', cursive;
+    font-size:34px;
+    line-height:1.3;
+
+    white-space:pre-wrap;
+    word-break:break-word;
+
 }
 
 
@@ -241,6 +274,18 @@ body {
     z-index: 3;
     font-size: 45px;
 }
+
+.sticky-body:empty::before {
+    content: attr(data-placeholder);
+    color: rgba(0, 0, 0, 0.35);
+    pointer-events: none;
+}
+
+.sticky-body.text-limit {
+    outline: 2px dashed #ff5b93;
+}
+
+
 
 .cake {
     bottom: 45px;

@@ -5,26 +5,31 @@ const styleButtons = document.querySelectorAll('.style-btn');
 const panelGroups = document.querySelectorAll('.panel-group');
 const canvas = document.querySelector('.birthday-canvas');
 
+
 /* =========================================
-   SELECTED NOTE Ito ang currently selected note.
-   Dito ilalapat ang:- paper color - font size - font style - delete
+   SELECTED NOTE
+
+   Ito ang currently selected sticky note.
+   Dito ilalapat ang:
+   - paper color
+   - font size
+   - font color
+   - delete
 ========================================= */
 let selectedNote = document.querySelector('.sticky-note');
 
+
 /* =========================================
    Z-INDEX MANAGER
-   Para kapag nag-click ng note, automatic siyang aangat sa ibabaw ng ibang notes.
+
+   Kapag nag-click ng sticky note,
+   aangat siya sa ibabaw ng ibang notes.
 ========================================= */
 let highestZIndex = 10;
 
 
 /* =========================================
    STYLE TAB SWITCHER
-
-   Paper Style
-   Tape Style
-   Floating Style
-   Background Style
 ========================================= */
 styleButtons.forEach(button => {
     button.addEventListener('click', () => {
@@ -44,9 +49,10 @@ styleButtons.forEach(button => {
    MAKE NOTE EDITABLE
 
    Ginagawa nitong:
+   - selectable
    - draggable
    - resizable
-   - selectable
+   - text-limited
 ========================================= */
 function makeNoteEditable(note) {
     let isDragging = false;
@@ -55,18 +61,46 @@ function makeNoteEditable(note) {
     let offsetY = 0;
 
     const resizeHandle = note.querySelector('.resize-handle');
+    const stickyBody = note.querySelector('.sticky-body');
 
     /* =========================================
-       NOTE SELECTED
-       Kapag click ang sticky note:
-      - magiging selected note - aakyat sa ibabaw  - pwede nang sulatan
-        ========================================= */
-        note.addEventListener('mousedown', (e) => {
+   CHARACTER LIMIT
 
-            selectedNote = note;
+   Hindi alert.
+   Pipigilan lang mag-type kapag puno na.
+========================================= */
+    const MAX_CHARS = 250;
 
-            highestZIndex++;
-            note.style.zIndex = highestZIndex;
+    stickyBody.addEventListener('beforeinput', (e) => {
+        if (
+            e.inputType === 'deleteContentBackward' ||
+            e.inputType === 'deleteContentForward' ||
+            e.inputType === 'historyUndo' ||
+            e.inputType === 'historyRedo'
+        ) {
+            return;
+        }
+
+        const currentText = stickyBody.innerText.trim();
+        const selection = window.getSelection();
+        const selectedText = selection ? selection.toString() : '';
+
+        const newTextLength = currentText.length - selectedText.length + 1;
+
+        if (newTextLength > MAX_CHARS) {
+            e.preventDefault();
+            stickyBody.classList.add('text-limit');
+        } else {
+            stickyBody.classList.remove('text-limit');
+        }
+    });
+
+    /* SELECT NOTE / BRING TO FRONT */
+    note.addEventListener('mousedown', (e) => {
+        selectedNote = note;
+
+        highestZIndex++;
+        note.style.zIndex = highestZIndex;
 
         if (e.target.classList.contains('resize-handle')) return;
 
@@ -85,6 +119,10 @@ function makeNoteEditable(note) {
         e.stopPropagation();
 
         selectedNote = note;
+
+        highestZIndex++;
+        note.style.zIndex = highestZIndex;
+
         isResizing = true;
     });
 
@@ -121,19 +159,16 @@ function makeNoteEditable(note) {
         note.style.cursor = 'grab';
     });
 
-/* =========================================
-   LIMIT TEXT INSIDE NOTE
-
-   Kapag hindi na kasya ang text,
-   hindi na papayagan mag-type pa.
-========================================= */
-note.addEventListener('input', () => {
-    if (note.scrollHeight > note.clientHeight || note.scrollWidth > note.clientWidth) {
-        document.execCommand('undo');
-        alert('Message is too long. Please make the note bigger or reduce font size.');
-    }
-});
-
+    /* LIMIT TEXT INSIDE STICKY BODY */
+    // stickyBody.addEventListener('input', () => {
+    //     if (
+    //         stickyBody.scrollHeight > stickyBody.clientHeight ||
+    //         stickyBody.scrollWidth > stickyBody.clientWidth
+    //     ) {
+    //         document.execCommand('undo');
+    //         alert('Message is too long. Please make the note bigger or reduce font size.');
+    //     }
+    // });
 
 }
 
@@ -148,8 +183,6 @@ document.querySelectorAll('.sticky-note').forEach(note => {
 
 /* =========================================
    PAPER STYLE COLORS
-
-   Nagpapalit ng kulay ng selected note
 ========================================= */
 document.querySelector('.paper-option.pink').addEventListener('click', () => {
     if (selectedNote) selectedNote.style.background = '#ffd9df';
@@ -170,11 +203,6 @@ document.querySelector('.paper-option.white').addEventListener('click', () => {
 
 /* =========================================
    ADD NEW STICKY NOTE
-
-   Kapag pinindot ang Note button:
-   - gagawa ng bagong note
-   - ilalagay sa canvas
-   - gagawing draggable/resizable
 ========================================= */
 const noteButton = document.querySelector('.tool.active');
 
@@ -182,7 +210,6 @@ noteButton.addEventListener('click', () => {
     const newNote = document.createElement('div');
 
     newNote.className = 'sticky-note';
-    newNote.contentEditable = true;
 
     newNote.style.left = '120px';
     newNote.style.top = '120px';
@@ -190,17 +217,12 @@ noteButton.addEventListener('click', () => {
     newNote.style.height = '220px';
     newNote.style.background = '#fff1a8';
 
-    /* =========================================
-    NEW NOTE ALWAYS STARTS ON TOP
-    ========================================= */
     highestZIndex++;
     newNote.style.zIndex = highestZIndex;
-
-    newNote.innerHTML = `
-        <h2>New Note</h2>
-        <p>Write something...</p>
-        <div class="resize-handle"></div>
-    `;
+  newNote.innerHTML = `
+    <div class="sticky-body" contenteditable="true" spellcheck="false" autocorrect="off" autocapitalize="off" autocomplete="off" data-placeholder="Write your message..."></div>
+    <div class="resize-handle"></div>
+`;
 
     canvas.appendChild(newNote);
 
@@ -210,19 +232,7 @@ noteButton.addEventListener('click', () => {
 
 
 /* =========================================
-   TODO NEXT FEATURES
-
-   - delete selected note
-   - duplicate selected note
-   - add stickers
-   - upload photo
-   - save design to database
-========================================= */
-
-
-/* =========================================
    DELETE SELECTED NOTE
-   Kapag may selected note, buburahin ito sa canvas.
 ========================================= */
 const deleteNoteBtn = document.getElementById('deleteNoteBtn');
 
@@ -237,40 +247,67 @@ deleteNoteBtn.addEventListener('click', () => {
 /* =========================================
    FONT SIZE
 
-   Pinapalaki / pinapaliit ang font
-   ng selected sticky note.
+   Font size ay ilalapat sa sticky body lang.
 ========================================= */
 document.getElementById('fontSmallBtn').addEventListener('click', () => {
     if (!selectedNote) return;
 
-    let currentSize = parseInt(window.getComputedStyle(selectedNote).fontSize);
+    const body = selectedNote.querySelector('.sticky-body');
+
+    let currentSize = parseInt(window.getComputedStyle(body).fontSize);
     currentSize = Math.max(18, currentSize - 2);
 
-    selectedNote.style.fontSize = currentSize + 'px';
+    body.style.fontSize = currentSize + 'px';
 });
 
 document.getElementById('fontBigBtn').addEventListener('click', () => {
     if (!selectedNote) return;
 
-    let currentSize = parseInt(window.getComputedStyle(selectedNote).fontSize);
+    const body = selectedNote.querySelector('.sticky-body');
+
+    let currentSize = parseInt(window.getComputedStyle(body).fontSize);
     currentSize = Math.min(50, currentSize + 2);
 
-    selectedNote.style.fontSize = currentSize + 'px';
+    body.style.fontSize = currentSize + 'px';
 });
 
 
 /* =========================================
    FONT COLOR
 
-   Pinapalitan ang text color
-   ng selected sticky note.
+   Text color ay ilalapat sa sticky body lang.
 ========================================= */
 document.querySelectorAll('.font-color').forEach(button => {
     button.addEventListener('click', () => {
         if (!selectedNote) return;
 
-        selectedNote.style.color = button.dataset.color;
+        const body = selectedNote.querySelector('.sticky-body');
+        body.style.color = button.dataset.color;
     });
 });
 
 
+/* =========================================
+   APPLY STYLE TO SELECTED TEXT
+========================================= */
+function applyToSelectedText(command, value = null) {
+    const selection = window.getSelection();
+
+    if (!selection || selection.rangeCount === 0 || selection.toString() === '') {
+        alert('Highlight muna ng text sa sticky note.');
+        return;
+    }
+
+    document.execCommand(command, false, value);
+}
+
+
+/* =========================================
+   FONT FAMILY
+   selected text lang ang papalitan
+========================================= */
+document.querySelectorAll('.font-family').forEach(button => {
+    button.addEventListener('click', () => {
+        applyToSelectedText('fontName', button.dataset.font);
+    });
+});
