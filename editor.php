@@ -1,11 +1,21 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Design Your Birthday Card</title>
+    
     <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Patrick+Hand&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="assets/css/editor.css"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
     <link rel="stylesheet" href="assets/css/editor.css">
+    <link rel="stylesheet" href="assets/css/tablet.css">
+    <link rel="stylesheet" href="assets/css/mobile.css">
 </head>
+
+
 <body>
 
 <div class="editor-page">
@@ -13,19 +23,63 @@
     <div class="top-bar">
         <a href="create-card.php" class="back-btn">‹ Back</a>
 
-        <div class="top-actions">
-            <button class="icon-btn">↶</button>
-            <button class="icon-btn">↷</button>
-            <button class="save-btn">Save</button>
-            <button class="preview-btn">Preview</button>
+            <div class="top-actions">
+
+        <!-- Device Preview -->
+        <div class="device-switcher">
+
+        <button id="desktopView" class="device-btn active" title="Desktop View">
+            <i class="fa-solid fa-desktop"></i>
+        </button>
+
+        <button id="tabletView" class="device-btn" title="Tablet View">
+            <i class="fa-solid fa-tablet-screen-button"></i>
+        </button>
+
+        <button id="mobileView" class="device-btn" title="Mobile View">
+            <i class="fa-solid fa-mobile-screen-button"></i>
+        </button>
+
+       </div>
+
+
+        <!-- Zoom -->
+
+        <select id="zoomSelect">
+
+            <option>25%</option>
+            <option>50%</option>
+            <option>75%</option>
+            <option selected>100%</option>
+            <option>125%</option>
+            <option>150%</option>
+
+        </select>
+
+
+        <button class="icon-btn">↶</button>
+
+        <button class="icon-btn">↷</button>
+
+        <button class="save-btn">
+            💾 Save
+        </button>
+
+        <button class="preview-btn">
+            👁 Preview
+        </button>
+
         </div>
     </div>
+
 
     <div class="editor-layout">
 
         <aside class="tool-bar">
             <button class="tool active">📝<span>Note</span></button>
-            <button class="tool">📸<span>Photo</span></button>
+            <!-- <button class="tool">📸<span>Photo</span></button>
+              -->
+            <button class="tool" id="photoBtn">📸<span>Photo</span></button>
             <button class="tool">🎀<span>Stickers</span></button>
             <button class="tool">🎵<span>Music</span></button>
             <button class="tool">⋯<span>More</span></button>
@@ -35,17 +89,17 @@
 
             <div class="birthday-canvas">
 
-                <div class="photo-card">
+                <!-- <div class="photo-card">
                     <div class="photo-placeholder">📸</div>
                     <p>Add Photo</p>
-                </div>
+                </div> -->
 
-                <div class="small-note">
+                <!-- <div class="small-note">
                     Happy Day! ♡
-                </div>
+                </div> -->
 
         
-                 <div class="sticky-note">
+                    <div class="canvas-object sticky-note">
 
                     <div class="sticky-body" contenteditable="true" spellcheck="false" autocorrect="off" autocapitalize="off" autocomplete="off" data-placeholder="Write your message..."></div>
 
@@ -87,9 +141,16 @@
         <button class="font-family" data-font="'Patrick Hand', cursive">Handwritten</button>
         <button class="font-family" data-font="'Nunito', sans-serif">Clean</button>
         <!-- delete -->
-        <button id="deleteNoteBtn" class="danger-btn">
-            Delete Note
-        </button>
+        <button id="deleteNoteBtn" class="danger-btn">Delete</button>
+        <button id="duplicateBtn">Duplicate</button>
+        <button id="rotateLeftBtn">↺ Rotate</button>
+        <button id="rotateRightBtn">↻ Rotate</button>
+
+        <button id="zoomInBtn">Zoom +</button>
+        <button id="zoomOutBtn">Zoom -</button>
+        <button id="flipXBtn">Flip X</button>
+        <button id="flipYBtn">Flip Y</button>
+        <button id="animateBtn">Animate</button>
     </div>
 
 
@@ -128,7 +189,20 @@
 
 </div>
 
-</body>
+<input type="file" id="photoInput" accept="image/*" hidden>
 
+<script src="assets/js/utils.js"></script>
+<script src="assets/js/selection.js"></script>
 <script src="assets/js/editor.js"></script>
+
+<script src="assets/js/note.js"></script>
+<script src="assets/js/photo.js"></script>
+<script src="assets/js/text.js"></script>
+
+<script src="assets/js/duplicate.js"></script>
+<script src="assets/js/delete.js"></script>
+<script src="assets/js/rotate.js"></script>
+<script src="assets/js/preview.js"></script>
+
+</body>
 </html>
