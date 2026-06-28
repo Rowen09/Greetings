@@ -51,9 +51,15 @@ function makeCanvasObjectEditable(item) {
     function startDrag(e) {
         if (e.target.classList.contains('resize-handle')) return;
 
-        e.preventDefault();
-
         selectObject(item);
+
+        // Kapag mismong text area ang kinlick,
+        // hayaan siyang mag-type, huwag i-drag.
+        if (e.target.closest('.sticky-body')) {
+            return;
+        }
+
+        e.preventDefault();
 
         isDragging = true;
 

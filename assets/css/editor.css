@@ -1,3 +1,10 @@
+@import url("layout/topbar.css");
+@import url("layout/sidebar.css");
+@import url("layout/canvas.css");
+@import url("layout/pages.css");
+@import url("layout/panel.css");
+@import url("objects/note.css");
+@import url("objects/photo.css");
 * {
     box-sizing: border-box;
 }
@@ -13,117 +20,7 @@ body {
     min-height: 100vh;
 }
 
-.top-bar {
-    height: 75px;
-    padding: 0 35px;
-    background: #fff;
-    border-bottom: 1px solid #eee;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
 
-.back-btn {
-    text-decoration: none;
-    color: #333;
-    font-weight: 800;
-    font-size: 18px;
-}
-
-.top-actions {
-    display: flex;
-    gap: 12px;
-    align-items: center;
-}
-
-.icon-btn,
-.save-btn,
-.preview-btn {
-    border: none;
-    border-radius: 14px;
-    padding: 12px 18px;
-    font-weight: 800;
-    cursor: pointer;
-}
-
-.icon-btn {
-    background: #f7f7f7;
-}
-
-.save-btn {
-    background: #ff5b93;
-    color: white;
-}
-
-.preview-btn {
-    background: #222;
-    color: white;
-}
-
-.editor-layout {
-    display: grid;
-    grid-template-columns: 90px 1fr 190px;
-    gap: 25px;
-    padding: 25px;
-}
-
-.tool-bar {
-    background: white;
-    border-radius: 24px;
-    padding: 16px 10px;
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.06);
-}
-
-.tool {
-    border: none;
-    background: transparent;
-    border-radius: 18px;
-    padding: 12px 5px;
-    cursor: pointer;
-    font-size: 25px;
-    font-weight: 800;
-}
-
-.tool span {
-    display: block;
-    font-size: 12px;
-    margin-top: 5px;
-}
-
-.tool.active {
-    background: #ffe4ef;
-    color: #ff4f8b;
-}
-
-.canvas-wrap {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.birthday-canvas {
-    position: relative;
-    width: 620px;
-    height: 760px;
-    background: #fff1e4;
-    border-radius: 28px;
-    overflow: hidden;
-    box-shadow: 0 15px 40px rgba(0,0,0,0.12);
-    border: 10px solid white;
-}
-
-.birthday-canvas::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background-image:
-        linear-gradient(rgba(255, 170, 190, 0.18) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 170, 190, 0.18) 1px, transparent 1px);
-    background-size: 28px 28px;
-}
 
 .photo-card {
     position: absolute;
@@ -168,121 +65,12 @@ body {
     z-index: 2;
 }
 
-.sticky-note {
-    position: absolute;
-    left: 70px;
-    top: 340px;
-
-    min-width: 280px;
-    min-height: 220px;
-
-
-    width: 480px;
-    /* min-width: 180px; */
-    max-width: 520px;
-
-    /* min-height: 300px; */
-    max-height: 520px;
-
-    background: #ffd9df;
-    padding: 45px;
-    border-radius: 8px;
-
-    font-family: 'Caveat', cursive;
-    font-size: 34px;
-    line-height: 1.3;
-
-    box-shadow: 0 12px 25px rgba(0,0,0,0.12);
-
-    outline: none;
-    z-index: 2;
-
-    /* resize: both;
-    overflow: hidden; */
-    resize: none;
-    overflow: hidden;
-
-    word-wrap: break-word;
-
-    cursor: grab;
-    user-select: none;
-}
-
-/* .sticky-note h2 {
-    margin: 0 0 20px;
-    text-align: center;
-    font-size: 38px;
-}
-
-.sticky-note p {
-    margin: 0;
-} */
-
-/* =========================================
-   STICKY NOTE HEADER
-========================================= */
-
-/* .sticky-header{
-
-    font-size:38px;
-    text-align:center;
-    margin-bottom:20px;
-    font-weight:bold;
-
-} */
-
-/* =========================================
-   STICKY NOTE BODY
-========================================= */
-
-.sticky-body{
-
-    width:100%;
-    height:100%;
-
-    outline:none;
-
-    font-family:'Caveat', cursive;
-    font-size:34px;
-    line-height:1.3;
-
-    white-space:pre-wrap;
-    word-break:break-word;
-
-}
-
-
-.resize-handle {
-    position: absolute;
-    width: 16px;
-    height: 16px;
-
-    right: -8px;
-    bottom: -8px;
-
-    background: #ff5b93;
-    border-radius: 50%;
-
-    cursor: se-resize;
-
-    z-index: 999;
-}
 
 
 .sticker {
     position: absolute;
     z-index: 3;
     font-size: 45px;
-}
-
-.sticky-body:empty::before {
-    content: attr(data-placeholder);
-    color: rgba(0, 0, 0, 0.35);
-    pointer-events: none;
-}
-
-.sticky-body.text-limit {
-    outline: 2px dashed #ff5b93;
 }
 
 
@@ -307,150 +95,6 @@ body {
     left: 35px;
 }
 
-.bottom-tools {
-    margin-top: 18px;
-    background: white;
-    border-radius: 22px;
-    padding: 14px;
-    display: flex;
-    gap: 12px;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.06);
-}
-
-.bottom-tools button {
-    border: none;
-    background: #fff0f6;
-    color: #ff4f8b;
-    padding: 13px 18px;
-    border-radius: 14px;
-    font-weight: 800;
-    cursor: pointer;
-}
-
-.pages-panel {
-    background: white;
-    border-radius: 24px;
-    padding: 20px;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.06);
-}
-
-.pages-panel h3 {
-    margin-top: 0;
-}
-
-.page-thumb {
-    height: 150px;
-    border: 2px solid #ff5b93;
-    border-radius: 18px;
-    background: #fff1e4;
-    margin-bottom: 18px;
-    position: relative;
-}
-
-.page-thumb span {
-    position: absolute;
-    bottom: -13px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: #ff5b93;
-    color: white;
-    width: 26px;
-    height: 26px;
-    border-radius: 50%;
-    text-align: center;
-    line-height: 26px;
-    font-weight: 800;
-}
-
-.add-page {
-    width: 100%;
-    height: 95px;
-    border: 2px dashed #ddd;
-    background: white;
-    border-radius: 18px;
-    font-weight: 800;
-    cursor: pointer;
-}
-
-.style-panel {
-    margin-top: 12px;
-    background: white;
-    border-radius: 22px;
-    padding: 16px;
-    width: 620px;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.06);
-}
-
-.panel-group {
-    display: none;
-    gap: 12px;
-    flex-wrap: wrap;
-}
-
-.panel-group.active {
-    display: flex;
-}
-
-.panel-group button {
-    border: 2px solid #ffe0eb;
-    background: #fff8fb;
-    color: #333;
-    padding: 13px 18px;
-    border-radius: 14px;
-    font-weight: 800;
-    cursor: pointer;
-}
-
-.panel-group button:hover {
-    border-color: #ff5b93;
-    color: #ff4f8b;
-}
-
-.style-btn.active {
-    background: #ff5b93;
-    color: white;
-}
-
-
-.photo-item {
-    position: absolute;
-    left: 120px;
-    top: 120px;
-
-    width: 220px;
-    height: 220px;
-
-    background: #fff;
-    padding: 10px 10px 35px;
-
-    box-shadow: 0 10px 22px rgba(0,0,0,0.16);
-    transform: rotate(-4deg);
-
-    cursor: grab;
-    z-index: 5;
-}
-
-.photo-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    pointer-events: none;
-}
-
-.photo-resize-handle {
-    position: absolute;
-    width: 16px;
-    height: 16px;
-
-    right: -8px;
-    bottom: -8px;
-
-    background: #ff5b93;
-    border-radius: 50%;
-    cursor: se-resize;
-    z-index: 999;
-}
 
 .float-animate {
     animation: floatItem 2s ease-in-out infinite;
@@ -460,23 +104,6 @@ body {
     0% { margin-top: 0; }
     50% { margin-top: -10px; }
     100% { margin-top: 0; }
-}
-
-/*=========================================
-SELECTED OBJECT
-=========================================*/
-
-.canvas-object.selected{
-
-    outline:2px dashed #5aa7ff;
-
-    outline-offset:6px;
-
-}
-
-
-.canvas-object {
-    touch-action: none;
 }
 
 
@@ -594,14 +221,14 @@ SELECTED OBJECT
     DEVICE BUTTONS
     =========================================*/
 
-    .device-switcher{
+    /* .device-switcher{
 
         display:flex;
         gap:8px;
 
-    }
+    } */
 
-    .device-btn{
+    /* .device-btn{
 
         width:42px;
         height:42px;
@@ -623,7 +250,7 @@ SELECTED OBJECT
         background:#ff5b93;
         color:white;
 
-    }
+    } */
 
 
     .desktop-preview .birthday-canvas{

@@ -1,0 +1,30 @@
+.tool-bar {
+    background: white;
+    border-radius: 24px;
+    padding: 16px 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.06);
+}
+
+.tool {
+    border: none;
+    background: transparent;
+    border-radius: 18px;
+    padding: 12px 5px;
+    cursor: pointer;
+    font-size: 25px;
+    font-weight: 800;
+}
+
+.tool span {
+    display: block;
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+.tool.active {
+    background: #ffe4ef;
+    color: #ff4f8b;
+}

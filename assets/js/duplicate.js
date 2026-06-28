@@ -1,12 +1,5 @@
 /* =========================================
    DUPLICATE.JS
-
-   Responsible for:
-   - Duplicate selected canvas object
-   Works for:
-   - sticky note
-   - photo
-   - future stickers
 ========================================= */
 
 const duplicateBtn = document.getElementById('duplicateBtn');
@@ -16,14 +9,16 @@ duplicateBtn.addEventListener('click', () => {
 
     const clone = selectedItem.cloneNode(true);
 
-    clone.style.left = (parseInt(selectedItem.style.left) + 25) + 'px';
-    clone.style.top = (parseInt(selectedItem.style.top) + 25) + 'px';
+    clone.style.left = (parseInt(selectedItem.style.left || 0) + 25) + 'px';
+    clone.style.top = (parseInt(selectedItem.style.top || 0) + 25) + 'px';
 
     highestZIndex++;
     clone.style.zIndex = highestZIndex;
 
+    clone.classList.remove('selected');
+
     canvas.appendChild(clone);
 
-    selectCanvasObject(clone);
     makeCanvasObjectEditable(clone);
+    selectObject(clone);
 });

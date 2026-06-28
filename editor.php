@@ -11,8 +11,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 
     <link rel="stylesheet" href="assets/css/editor.css">
-    <link rel="stylesheet" href="assets/css/tablet.css">
-    <link rel="stylesheet" href="assets/css/mobile.css">
 </head>
 
 
@@ -26,7 +24,7 @@
             <div class="top-actions">
 
         <!-- Device Preview -->
-        <div class="device-switcher">
+        <!-- <div class="device-switcher">
 
         <button id="desktopView" class="device-btn active" title="Desktop View">
             <i class="fa-solid fa-desktop"></i>
@@ -40,11 +38,11 @@
             <i class="fa-solid fa-mobile-screen-button"></i>
         </button>
 
-       </div>
+       </div> -->
 
 
         <!-- Zoom -->
-
+<!-- 
         <select id="zoomSelect">
 
             <option>25%</option>
@@ -54,7 +52,7 @@
             <option>125%</option>
             <option>150%</option>
 
-        </select>
+        </select> -->
 
 
         <button class="icon-btn">↶</button>
@@ -65,7 +63,7 @@
             💾 Save
         </button>
 
-        <button class="preview-btn">
+        <button type="button" id="previewBtn" class="preview-btn">
             👁 Preview
         </button>
 
@@ -191,9 +189,10 @@
 
 <input type="file" id="photoInput" accept="image/*" hidden>
 
+<script src="assets/js/canvasModel.js"></script>
 <script src="assets/js/utils.js"></script>
-<script src="assets/js/selection.js"></script>
 <script src="assets/js/editor.js"></script>
+<script src="assets/js/selection.js"></script>
 
 <script src="assets/js/note.js"></script>
 <script src="assets/js/photo.js"></script>
@@ -202,7 +201,11 @@
 <script src="assets/js/duplicate.js"></script>
 <script src="assets/js/delete.js"></script>
 <script src="assets/js/rotate.js"></script>
-<script src="assets/js/preview.js"></script>
+
+<script src="assets/js/save.js"></script>
+<script src="assets/js/toolbar.js"></script>
+
+<!-- <script src="assets/js/preview.js"></script> -->
 
 </body>
 </html>
