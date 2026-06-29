@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 
     <link rel="stylesheet" href="assets/css/editor.css">
+    <link rel="stylesheet" href="assets/css/objects/sticker.css">
 </head>
 
 
@@ -21,39 +22,7 @@
     <div class="top-bar">
         <a href="create-card.php" class="back-btn">‹ Back</a>
 
-            <div class="top-actions">
-
-        <!-- Device Preview -->
-        <!-- <div class="device-switcher">
-
-        <button id="desktopView" class="device-btn active" title="Desktop View">
-            <i class="fa-solid fa-desktop"></i>
-        </button>
-
-        <button id="tabletView" class="device-btn" title="Tablet View">
-            <i class="fa-solid fa-tablet-screen-button"></i>
-        </button>
-
-        <button id="mobileView" class="device-btn" title="Mobile View">
-            <i class="fa-solid fa-mobile-screen-button"></i>
-        </button>
-
-       </div> -->
-
-
-        <!-- Zoom -->
-<!-- 
-        <select id="zoomSelect">
-
-            <option>25%</option>
-            <option>50%</option>
-            <option>75%</option>
-            <option selected>100%</option>
-            <option>125%</option>
-            <option>150%</option>
-
-        </select> -->
-
+        <div class="top-actions">
 
         <button class="icon-btn">↶</button>
 
@@ -78,7 +47,7 @@
             <!-- <button class="tool">📸<span>Photo</span></button>
               -->
             <button class="tool" id="photoBtn">📸<span>Photo</span></button>
-            <button class="tool">🎀<span>Stickers</span></button>
+            <button class="tool" id="stickerBtn">🎀<span>Stickers</span></button>
             <button class="tool">🎵<span>Music</span></button>
             <button class="tool">⋯<span>More</span></button>
         </aside>
@@ -86,16 +55,6 @@
         <main class="canvas-wrap">
 
             <div class="birthday-canvas">
-
-                <!-- <div class="photo-card">
-                    <div class="photo-placeholder">📸</div>
-                    <p>Add Photo</p>
-                </div> -->
-
-                <!-- <div class="small-note">
-                    Happy Day! ♡
-                </div> -->
-
         
                     <div class="canvas-object sticky-note">
 
@@ -105,15 +64,40 @@
 
                 </div>
 
+            </div>
+
+                <!-- =========================================
+            PANEL NG STICKERS
+
+            Dito lalabas ang mga sticker na
+            puwedeng idagdag ng user sa canvas.
+        ========================================== -->
+
+        <div class="sticker-panel" id="stickerPanel">
+
+            <h3>Birthday Stickers</h3>
+
+            <div class="sticker-grid">
+
+                <button class="sticker-item" data-src="assets/stickers/bday_stickers/bday-cake3.png">
+                    <img src="assets/stickers/bday_stickers/bday-cake3.png" alt="Birthday Cake">
+                </button>
+
+                <button class="sticker-item" data-src="assets/stickers/bday_stickers/bday-sign2.png">
+                    <img src="assets/stickers/bday_stickers/bday-sign2.png" alt="Happy Birthday Sign">
+                </button>
+
+                <button class="sticker-item" data-src="assets/stickers/bday_stickers/balloon.png">
+                    <img src="assets/stickers/bday_stickers/balloon.png" alt="Balloon">
+                </button>
+
+                <button class="sticker-item" data-src="assets/stickers/bday_stickers/bday-cake.png">
+                    <img src="assets/stickers/bday_stickers/bday-cake.png" alt="Pink Birthday Cake">
+                </button>
 
             </div>
 
-            <!-- <div class="bottom-tools">
-                <button>Paper Style</button>
-                <button>Tape Style</button>
-                <button>Floating Style</button>
-                <button>Background Style</button>
-            </div> -->
+        </div>  
             <div class="bottom-tools">
     <button class="style-btn active" data-panel="paper">Paper Style</button>
     <button class="style-btn" data-panel="tape">Tape Style</button>
@@ -193,6 +177,7 @@
 <script src="assets/js/utils.js"></script>
 <script src="assets/js/editor.js"></script>
 <script src="assets/js/selection.js"></script>
+<script src="assets/js/sticker.js"></script>
 
 <script src="assets/js/note.js"></script>
 <script src="assets/js/photo.js"></script>
@@ -204,6 +189,7 @@
 
 <script src="assets/js/save.js"></script>
 <script src="assets/js/toolbar.js"></script>
+
 
 <!-- <script src="assets/js/preview.js"></script> -->
 
