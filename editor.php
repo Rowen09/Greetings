@@ -95,6 +95,31 @@
                     <img src="assets/stickers/bday_stickers/bday-cake.png" alt="Pink Birthday Cake">
                 </button>
 
+                 <button class="sticker-item" data-src="assets/stickers/bday_stickers/bday-cake2.png">
+                    <img src="assets/stickers/bday_stickers/bday-cake2.png" alt="Birthday Cake">
+                </button>
+
+                <button class="sticker-item" data-src="assets/stickers/bday_stickers/bday-sign1.png">
+                    <img src="assets/stickers/bday_stickers/bday-sign1.png" alt="Birthday Sign">
+                </button>
+
+
+                 <button class="sticker-item" data-src="assets/stickers/bday_stickers/balloon.png">
+                    <img src="assets/stickers/bday_stickers/balloon.png" alt="Balloon">
+                </button>
+
+                <button class="sticker-item" data-src="assets/stickers/bday_stickers/bday-cake.png">
+                    <img src="assets/stickers/bday_stickers/bday-cake.png" alt="Pink Birthday Cake">
+                </button>
+
+                 <button class="sticker-item" data-src="assets/stickers/bday_stickers/bday-cake2.png">
+                    <img src="assets/stickers/bday_stickers/bday-cake2.png" alt="Birthday Cake">
+                </button>
+
+                <button class="sticker-item" data-src="assets/stickers/bday_stickers/bday-sign1.png">
+                    <img src="assets/stickers/bday_stickers/bday-sign1.png" alt="Birthday Sign">
+                </button>
+
             </div>
 
         </div>  

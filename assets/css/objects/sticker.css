@@ -43,7 +43,7 @@
 
 .sticker-item {
     height: 90px;
-    border: none;
+    border: none; 
     border-radius: 14px;
     background: #fff7fb;
     cursor: pointer;
@@ -74,4 +74,33 @@
     object-fit: contain;
     pointer-events: none;
     user-select: none;
+}
+
+/* =========================================
+   STICKER PANEL
+========================================= */
+
+.sticker-panel {
+    width: 600px;
+    margin-top: 14px;
+    padding: 16px;
+    background: #fff;
+    border-radius: 18px;
+
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
+.sticker-grid {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 12px;
+
+    min-width: max-content;
+}
+
+.sticker-item {
+    flex: 0 0 90px;
+    width: 200px;
+    height: 120px;
 }
